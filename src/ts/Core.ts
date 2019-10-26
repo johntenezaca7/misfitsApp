@@ -1,5 +1,5 @@
 import { Observable, Subscription, of, fromEvent }  from "rxjs";
-import { map, catchError, switchMap, delay, retry } from "rxjs/operators";
+import { map, catchError, switchMap, delay } from "rxjs/operators";
 import { ajax } from "rxjs/ajax";
 
 export enum CoreEnum {
