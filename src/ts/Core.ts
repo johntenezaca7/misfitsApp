@@ -7,13 +7,13 @@ export enum CoreEnum {
   ContentType = "Content-Type",
   CustomerToken = "721028102",
   BackToList = "back-to-list"
-}
+};
 
 export interface CoreConfig {
   removeSpinnerSpeed?: number;
   getReqUrl?: string;
   postReqUrl?: string;
-}
+};
 
 class Core {
   private loadSpinner: HTMLElement;
@@ -66,12 +66,12 @@ class Core {
     this.initObs(this.removeSpinnerSpeed, this.getReqUrl, this.postReqUrl);
     
     this.init();
-  }
+  };
 
   // Initalize display
   init(): void {
     this.$initDisplay.subscribe();
-  }
+  };
 
   // Initialize Observables
   initObs(speed:number, url: string, postUrl:string): void {
@@ -113,7 +113,7 @@ class Core {
         return of(error);
       })
     );
-  }
+  };
 
   // Send post req with custom header and display success!
   productSelectReq(ev:Event, postUrl: string): Observable<Subscription> {
@@ -133,8 +133,8 @@ class Core {
           return of(error);
         })
       );
-    }
-  }
+    };
+  };
 
   // Render data from get request or render sold out view
   displayInitData(res:any, iconFunc: Function): void {
@@ -162,7 +162,7 @@ class Core {
     } else {
       this.container.innerHTML = this.soldOutView;
     };
-  }
+  };
 
   // Display Icons
   showIcon(item):string {
@@ -180,13 +180,13 @@ class Core {
         return `<i class="fab fa-apple"></i>`;
       default:
         return `<i class="fas fa-utensils"></i>`;
-    }
-  }
+    };
+  };
 
   // Render ajax error view
   displayAjaxError(): void {
     this.container.innerHTML = this.ajaxErrorView;
-  }
+  };
 
   // Render success message and add a link back to select more options
   selectOptionSuccess(obj:object): void {
@@ -196,7 +196,7 @@ class Core {
       this.backToList = document.getElementById(CoreEnum.BackToList);
 
       this.backToListObs(this.backToList).subscribe();
-    }
+    };
   };
 
   // On click, display inital data again
@@ -205,7 +205,6 @@ class Core {
       switchMap(() => this.$loadInitData)
     );
   };
-
-}
+};
 
 export { Core };
