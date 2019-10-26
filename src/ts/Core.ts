@@ -83,7 +83,7 @@ class Core {
         subscriber.complete();
       }
     ).pipe(
-      delay(2000),
+      delay(speed),
       map(() => this.loadSpinner.style.display = "none"),
       switchMap(() => this.$loadInitData),
     );
@@ -103,7 +103,7 @@ class Core {
             this.container.innerHTML = this.loaderView;
             return event;
           }),
-          delay(1500),
+          delay(speed),
           switchMap((event) => {
             return this.productSelectReq(event, postUrl)
           })
