@@ -1,11 +1,10 @@
-// Init Modules
 const { series, parallel, src, dest, watch } = require("gulp");
 const sass = require("gulp-sass");
 const rename = require("gulp-rename");
 
 const webpackStream = require("webpack-stream");
 const webpackConfig = require("./webpack.config");
-var browserSync = require('browser-sync').create();
+const browserSync = require('browser-sync').create();
 
 // File Path Variables
 const files = {
@@ -21,7 +20,7 @@ const files = {
     scss: "./src/scss/**/*.scss",
     ts: "./src/ts/*.ts"
   }
-}
+};
 
 // BrowserSync Dev Server
 function browsersync() {
@@ -31,7 +30,7 @@ function browsersync() {
       baseDir: "public"
     }
   });
-}
+};
 
 // Sass Task
 function scssTask() {
@@ -39,7 +38,7 @@ function scssTask() {
     .pipe( sass() )
     .pipe(rename("styles.css"))
     .pipe( dest( files.public.css ));
-}
+};
 
 // TS Task 
 function tsTask() {
@@ -47,8 +46,7 @@ function tsTask() {
     .pipe( webpackStream( webpackConfig ))
     .pipe(rename("main.js"))
     .pipe( dest( files.public.js ));
-}
-
+};
 
 // Watch Task
 function watchTask() {
@@ -57,7 +55,7 @@ function watchTask() {
   // Watch files
   watch( [ files.watch.scss, files.watch.ts ] ,
     parallel( scssTask, tsTask )).on('change', browserSync.reload);
-}
+};
 
 // Default Task
 exports.default = series(
