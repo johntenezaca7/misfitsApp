@@ -69,13 +69,12 @@ class Core {
   }
 
   // Initalize display
-  init() {
+  init(): void {
     this.$initDisplay.subscribe();
   }
 
   // Initialize Observables
-  initObs(speed:number, url: string, postUrl:string ) {
-
+  initObs(speed:number, url: string, postUrl:string): void {
     // Wait 2 secs, remove spinner and render data from API call
     this.$initDisplay = Observable.create( 
       subscriber => {
@@ -105,19 +104,19 @@ class Core {
           }),
           delay(speed),
           switchMap((event) => {
-            return this.productSelectReq(event, postUrl)
+            return this.productSelectReq(event, postUrl);
           })
         ).subscribe();
       }),
       catchError(error => {
         this.displayAjaxError();
-        return of(error)
+        return of(error);
       })
     );
   }
 
   // Send post req with custom header and display success!
-  productSelectReq(ev:Event, postUrl: string) {
+  productSelectReq(ev:Event, postUrl: string): Observable<Subscription> {
     const id = ev.target['id'] ? ev.target['id'] : ev.target['parentElement']['id'];
     if (id) {
       return ajax({
@@ -131,14 +130,14 @@ class Core {
         map(response => this.selectOptionSuccess(response)),
         catchError(error => {
           this.displayAjaxError();
-          return of(error)
+          return of(error);
         })
       );
     }
   }
 
   // Render data from get request or render sold out view
-  displayInitData(res:any, iconFunc) {
+  displayInitData(res:any, iconFunc: Function): void {
     const { items } = res.data;
 
     const renderData = `
@@ -166,7 +165,7 @@ class Core {
   }
 
   // Display Icons
-  showIcon(item) {
+  showIcon(item):string {
     switch(item.product) {
       case "Eggs":
         return `<i class="fas fa-egg"></i>`;
@@ -190,10 +189,9 @@ class Core {
   }
 
   // Render success message and add a link back to select more options
-  selectOptionSuccess(obj:object) {
-
+  selectOptionSuccess(obj:object): void {
     if (obj["response"] && obj["status"] === 200) {
-
+      
       this.container.innerHTML = this.successView;
       this.backToList = document.getElementById(CoreEnum.BackToList);
 
