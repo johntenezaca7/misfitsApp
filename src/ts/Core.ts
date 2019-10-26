@@ -11,8 +11,7 @@ export enum CoreEnum {
 
 export interface CoreConfig {
   removeSpinnerSpeed?: number;
-  getReqUrl?: string;
-  postReqUrl?: string;
+  requestUrl?: string;
 };
 
 class Core {
@@ -22,8 +21,7 @@ class Core {
   private products: NodeList;
 
   private removeSpinnerSpeed: number;
-  private getReqUrl: string;
-  private postReqUrl: string;
+  private requestUrl: string;
   private loaderView: string;
   private successView: string;
   private ajaxErrorView: string;
@@ -36,8 +34,7 @@ class Core {
   constructor(container:HTMLElement, spinner:HTMLElement, config: CoreConfig) {
 
     this.removeSpinnerSpeed = config && config.removeSpinnerSpeed || 5000;
-    this.getReqUrl = config && config.getReqUrl;
-    this.postReqUrl = config && config.postReqUrl;
+    this.requestUrl = config && config.requestUrl;
 
     this.loadSpinner = spinner;
     this.container = container;
@@ -63,7 +60,7 @@ class Core {
 
     this.soldOutView = `<div class="error"><h3>Sold out!</h3></div>`;
 
-    this.initObs(this.removeSpinnerSpeed, this.getReqUrl, this.postReqUrl);
+    this.initObs(this.removeSpinnerSpeed, this.requestUrl);
     
     this.init();
   };
@@ -74,7 +71,7 @@ class Core {
   };
 
   // Initialize Observables
-  initObs(speed:number, url: string, postUrl:string): void {
+  initObs(speed:number, url: string): void {
     // Wait 2 secs, remove spinner and render data from API call
     this.$initDisplay = Observable.create( 
       subscriber => {
@@ -104,7 +101,7 @@ class Core {
           }),
           delay(speed),
           switchMap((event) => {
-            return this.productSelectReq(event, postUrl);
+            return this.productSelectReq(event, url);
           })
         ).subscribe();
       }),
@@ -116,11 +113,11 @@ class Core {
   };
 
   // Send post req with custom header and display success!
-  productSelectReq(ev:Event, postUrl: string): Observable<Subscription> {
+  productSelectReq(ev:Event, url: string): Observable<Subscription> {
     const id = ev.target['id'] ? ev.target['id'] : ev.target['parentElement']['id'];
     if (id) {
       return ajax({
-        url: `${postUrl}${id}`,
+        url: `${url}/${id}`,
         method: 'POST',
         headers: {
           "Content-Type": CoreEnum.ContentType,
