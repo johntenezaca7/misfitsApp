@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "module": "commonjs",
+    "target": "es3",
+    "rootDir": "./src/ts",
+    "lib": [
+      "es5",
+      "es2015",
+      "dom",
+      "es6"]
+  }
+}

@@ -1,0 +1,119 @@
+@import url("https://fonts.googleapis.com/css?family=Work+Sans&display=swap");
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Work Sans', sans-serif; }
+
+.lds-facebook {
+  display: inline-block;
+  position: relative;
+  width: 64px;
+  height: 64px; }
+
+.lds-facebook div {
+  display: inline-block;
+  position: absolute;
+  left: 6px;
+  width: 13px;
+  background: #FF8C42;
+  animation: lds-facebook 1.2s cubic-bezier(0, 0.5, 0.5, 1) infinite; }
+
+.lds-facebook div:nth-child(1) {
+  left: 6px;
+  animation-delay: -0.24s; }
+
+.lds-facebook div:nth-child(2) {
+  left: 26px;
+  animation-delay: -0.12s; }
+
+.lds-facebook div:nth-child(3) {
+  left: 45px;
+  animation-delay: 0; }
+
+@keyframes lds-facebook {
+  0% {
+    top: 6px;
+    height: 51px; }
+  50%, 100% {
+    top: 19px;
+    height: 26px; } }
+
+.main__logo-wrap {
+  margin: 0 auto;
+  padding: 6rem 0 4rem;
+  width: 12rem; }
+
+.main__container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; }
+
+.main__spinner {
+  margin: 4rem 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; }
+
+.main .error {
+  margin-top: 4rem; }
+
+.main .loading {
+  font-size: 1.5rem; }
+  .main .loading--success h3 {
+    margin-bottom: 1rem;
+    text-align: center; }
+  .main .loading--success p {
+    margin: 0;
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+    color: #faad31;
+    cursor: pointer; }
+
+.init-data-grid {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; }
+  .init-data-grid__title {
+    font-size: 1.5rem; }
+  .init-data-grid__items {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 2rem; }
+  .init-data-grid__item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: calc(100%);
+    margin-right: 2rem;
+    margin-left: 2rem;
+    margin-bottom: 2rem;
+    border: 1px solid black;
+    box-shadow: 6px 6px #faad31;
+    transition: box-shadow 0.2s;
+    cursor: pointer; }
+    .init-data-grid__item:hover {
+      box-shadow: 10px 10px #faad31; }
+    .init-data-grid__item i {
+      font-size: 3rem; }
+    @media (min-width: 768px) {
+      .init-data-grid__item {
+        width: calc(100% / 3 - 3rem);
+        margin-right: 3rem;
+        margin-left: 3rem;
+        margin-bottom: 3rem; } }
+    @media (min-width: 1200px) {
+      .init-data-grid__item {
+        width: calc(100% / 6 - 5rem);
+        margin-right: 2rem;
+        margin-left: 2rem;
+        margin-bottom: 2rem; } }

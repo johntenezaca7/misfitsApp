@@ -1,0 +1,25 @@
+{
+  "name": "misfitsmarket",
+  "version": "1.0.0",
+  "description": "demo-app",
+  "main": "index.js",
+  "scripts": {
+    "start": "gulp"
+  },
+  "author": "John T",
+  "license": "ISC",
+  "devDependencies": {
+    "browser-sync": "^2.26.7",
+    "gulp": "^4.0.2",
+    "gulp-rename": "^1.4.0",
+    "gulp-sass": "^4.0.2",
+    "gulp-uglify-es": "^2.0.0",
+    "ts-loader": "^6.1.0",
+    "typescript": "^3.6.3",
+    "webpack": "^4.40.2",
+    "webpack-stream": "^5.2.1"
+  },
+  "dependencies": {
+    "rxjs": "^6.5.3"
+  }
+}
