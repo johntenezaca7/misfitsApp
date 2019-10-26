@@ -113,7 +113,4 @@ body {
         margin-bottom: 3rem; } }
     @media (min-width: 1200px) {
       .init-data-grid__item {
-        width: calc(100% / 6 - 5rem);
-        margin-right: 2rem;
-        margin-left: 2rem;
-        margin-bottom: 2rem; } }
+        width: calc(100% / 5 - 5rem); } }
