@@ -1,11 +1,11 @@
-import { Core, CoreConfig } from "./Core";
-
-const Spinner = document.getElementById("spinner");
-const MainContainer = document.getElementById("main-container");
+import { Core } from "./Core";
+import { CoreConfig } from "./Core.info";
 
 const Config: CoreConfig = {
-  removeSpinnerSpeed: 2000,
-  requestUrl :"https://applicant-dev.misfitsmarket.com/api/test/v1"
+  speed: 500,
+  url: "https://applicant-dev.misfitsmarket.com/api/test/v1",
+  spinner: document.getElementById("spinner"),
+  container: document.getElementById("main-container")
 };
 
-const initCore = new Core(MainContainer, Spinner, Config);
+const initCore = new Core(Config);
